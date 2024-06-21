@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Reset margin and padding for all elements */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Basic styling for the body */
+body {
+  font-family: 'Roboto', sans-serif; /* Use Roboto font */
+  background-color: #f1f1f1; /* Light gray background */
+  display: flex; /* Flexbox layout */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  height: 100vh; /* Full viewport height */
+}
+
+/* Calculator container styling */
+.calculator {
+  width: 900px; /* Set width of calculator */
+  background-color: #333; /* Dark background color */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  padding: 0; /* Remove default padding */
+}
+
+/* Display styling */
+.display {
+  background-color: #222; /* Darker background for display */
+  color: #fff; /* White text color */
+  font-size: 2em; /* Large font size */
+  text-align: right; /* Right-align text */
+  padding: 20px; /* Padding inside display */
+  border-radius: 5px; /* Rounded corners */
+  margin-bottom: 20px; /* Space below display */
+}
+
+/* Buttons container styling */
+.buttons {
+  display: grid; /* Grid layout for buttons */
+  grid-template-columns: repeat(10, 1fr); /* 10 equal columns */
+}
+
+/* Common button styling */
+.button {
+  background-color: #555; /* Default button background */
+  border: none; /* Remove border */
+  color: #fff; /* White text color */
+  padding: 20px; /* Padding inside buttons */
+  font-size: 1em; /* Default font size */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  text-align: center; /* Center-align text */
+}
+
+/* Operator button styling */
+.button.operator {
+  background-color: rgb(240 160 59); /* Specific background for operators */
+  font-size: 2em; /* Larger font size */
+}
+
+/* Number button styling */
+.button.number {
+  background-color: rgb(115 115 110); /* Specific background for numbers */
+}
+
+/* Special button styling */
+.button.rrad {
+  border-radius: 0 0 0 10px; /* Rounded corner on bottom left */
+}
+
+.button.equals {
+  border-radius: 0 0 10px 0; /* Rounded corner on bottom right */
+  background-color: rgb(240 160 59); /* Same background as operators */
+}
+
+/* Zero button spans two columns */
+.button.zero {
+  grid-column: span 2;
+}
+
+/* Button active state styling */
+.button:active {
+  background-color: #777; /* Darker background on active state */
+}
+
+/* Responsive styling for mobile devices */
+@media (max-width: 500px) {
+  .calculator {
+    width: 100%; /* Full width on small screens */
+    padding: 10px; /* Add padding */
+  }
+
+  .display {
+    font-size: 1.5em; /* Smaller font size for display */
+  }
+
+  .button {
+    padding: 15px; /* Smaller padding for buttons */
+    font-size: 0.8em; /* Smaller font size */
+  }
+}
+
+/* Responsive button grid for mobile devices */
+@media (max-width: 500px) {
+  .buttons {
+    grid-template-columns: repeat(4, 1fr); /* 4 equal columns on small screens */
+  }
+
+  .button {
+    padding: 15px; /* Consistent smaller padding */
+    font-size: 1.2rem; /* Slightly larger font for buttons */
+  }
+
+  /* Hide extra function buttons on mobile view */
+  .hidden-mobile {
+    display: none;
+  }
+}
