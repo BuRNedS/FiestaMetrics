@@ -98,7 +98,7 @@ const App = () => {
         setDisplay((prev) => Math.cbrt(evaluate(prev)).toString());
         break;
       case 'ʸ√x':
-        setDisplay((prev) => `Math.pow(${prev}, 1/`);
+        setDisplay((prev) => prev + '^(1/');
         break;
       case 'ln':
         setDisplay((prev) => Math.log(evaluate(prev)).toString());
@@ -115,8 +115,13 @@ const App = () => {
       case 'tan':
         handleTrigonometry(label);
         break;
+      case 'asin':
+      case 'acos':
+      case 'atan':
+        handleInverseTrigonometry(label);
+        break;
       case 'e':
-        setDisplay((prev) => prev + Math.E.toString());
+        setDisplay(Math.E.toString());
         break;
       case 'EE':
         setDisplay((prev) => prev + 'e');
@@ -147,6 +152,15 @@ const App = () => {
     const result = func === 'sin' ? Math.sin(angle) :
                    func === 'cos' ? Math.cos(angle) : Math.tan(angle);
     setDisplay(result.toString());
+  };
+
+  // Function to handle inverse trigonometric functions
+  const handleInverseTrigonometry = (func) => {
+    const value = evaluate(display);
+    const resultInRadians = func === 'asin' ? Math.asin(value) :
+                            func === 'acos' ? Math.acos(value) : Math.atan(value);
+    const resultInDegrees = resultInRadians * (180 / Math.PI);
+    setDisplay(resultInDegrees.toString());
   };
 
   // Button configuration array
@@ -182,9 +196,9 @@ const App = () => {
     { label: '6', className: 'number' },
     { label: '−', className: 'operator' },
     { label: 'x!', className: 'hidden-mobile' },
-    { label: 'sin', className: 'hidden-mobile' },
-    { label: 'cos', className: 'hidden-mobile' },
-    { label: 'tan', className: 'hidden-mobile' },
+    { label: isSecondary ? 'asin' : 'sin', className: 'hidden-mobile' },
+    { label: isSecondary ? 'acos' : 'cos', className: 'hidden-mobile' },
+    { label: isSecondary ? 'atan' : 'tan', className: 'hidden-mobile' },
     { label: 'e', className: 'hidden-mobile' },
     { label: 'EE', className: 'hidden-mobile' },
     { label: '1', className: 'number' },
@@ -221,6 +235,3 @@ const App = () => {
 };
 
 export default App;
-
-
-//© Satyam Sundram
